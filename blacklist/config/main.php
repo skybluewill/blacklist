@@ -54,7 +54,7 @@ return [
             'enableStrictParsing' => true,
             'showScriptName' => false,
             'rules' => [
-                ['class' => 'yii\rest\UrlRule', 'controller' => ['v1/company'], 'pluralize' => false],
+                ['class' => 'yii\rest\UrlRule', 'controller' => ['v1/company'], 'pluralize' => false, 'extraPatterns' =>['PUT verify' => 'verify']],
                 "<controller:\w+>/<action:\w+>/<id:\d+>"=>"<controller>/<action>",
                 "<controller:\w+>/<action:\w+>"=>"<controller>/<action>",
             ],
