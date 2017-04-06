@@ -313,8 +313,10 @@ and open the template in the editor.
                         });
                 },
                 methods : {
+                    //处理列表框checkbox的状态选择，用数组表示
                     doCompanyListId : function (id, event) {
                         var tempId = {"id" : id};
+                        //如果是选中操作，则直接添加进数组，如果是未选择状态，则根据id查找数组，然后删除该数据，如果没有找到数据，则不作任何操作
                         if(event.target.checked) {
                             this.idArray.push(tempId);
                         } else {
@@ -325,6 +327,7 @@ and open the template in the editor.
                                 }
                             }
                         }
+                        //console.log(JSON.stringify(this.idArray));
                     }
                 },
             });

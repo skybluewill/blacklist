@@ -164,7 +164,7 @@ class ManageModel extends Model {
         //检测是否有权限和指定的数据
         if(\Yii::$app ->user ->isGuest && !isset($data['verify'])) {
             \Yii::error('审核没通过验证');
-            return ['error' =>1];
+            return (new ResponseResult()) ->result(ResponseResult::ERROR, ResponseResult::REASON['failedVerify']) ;
         }
         //是否有指定数据
         if($query = \Yii::$app ->request ->getQueryParam('id')) {
