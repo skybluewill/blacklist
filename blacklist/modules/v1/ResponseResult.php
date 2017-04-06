@@ -17,6 +17,7 @@ class ResponseResult {
         'sameCompany' => '已有相同公司条目',
         'createUserFault' => '创建用户失败',
         'notFindUser' => '没有找到指定用户',
+        'failedVerify' => '审核未通过',
     ];
 
     /**
