@@ -36,12 +36,15 @@ class CompanyController extends Controller {
         ]); 
     }
     
-
+    /**
+     * 获取简要数据
+     * 
+     */
     public function actionIndex()
     {
        $model = new ManageModel();
        $data = $model ->indexCompany();
-       //var_dump($data);exit;
+       //因为yii2自带序列化会不同的处理array和pagination.这里返回数据为array，但是这里返回的data字段（@ResponseResult）是pagination，需要自行序列化来带分页信息，所以得自己事先序列化
        $serializer = new Serializer(['collectionEnvelope' => 'companies']);
        $result = $serializer ->serialize($data);
        return (new ResponseResult()) ->result(ResponseResult::SUCCESS, ResponseResult::REASON['succ'], $result) ;
@@ -110,7 +113,7 @@ class CompanyController extends Controller {
     
     /**
      * PUT id
-     * 
+     * 更新
      */
     public function actionUpdate() {
         $model = new ManageModel();
@@ -122,9 +125,19 @@ class CompanyController extends Controller {
     
     /**
      * GET id
+     * 详情
      */
     public function actionView() {
         $model = new ManageModel();
         return $model ->detailCompany();
+    }
+    
+    /**
+     * PUT verify
+     * 审核
+     */
+    public function actionVerify() {
+        $model = new ManageModel();
+        return $model ->verifyCompany();
     }
 }
